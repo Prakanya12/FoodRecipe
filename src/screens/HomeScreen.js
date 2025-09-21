@@ -1,4 +1,3 @@
-
 import { View, Text, ScrollView, Image, StyleSheet } from "react-native";
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
@@ -729,18 +728,20 @@ export default function HomeScreen() {
         </View>
 
         <View testID="categoryList">
-             <Categories
-              categories={categories}
-              activeCategory={activeCategory}
-              handleChangeCategory={handleChangeCategory}
-            />
-       
+          <Categories
+            categories={categories}
+            activeCategory={activeCategory}
+            handleChangeCategory={handleChangeCategory}
+          />
         </View>
 
         <View testID="foodList">
-                <Food food={filteredFoods} categories={categories} />
+          <FoodItems 
+            foods={filteredfoods} 
+            categories={categories} 
+          />
+        </View>
 
-          </View>
       </ScrollView>
     </View>
   );
