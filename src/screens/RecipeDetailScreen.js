@@ -9,7 +9,8 @@ import { useDispatch, useSelector } from "react-redux"; // Redux hooks
 import { toggleFavorite } from "../redux/favoritesSlice"; // Redux action
 
 export default function RecipeDetailScreen(props) {
-  const recipe = props.route.params; // recipe passed from previous screen
+  const recipe = props.route.params; 
+   {recipe.title}
 
   const dispatch = useDispatch();
   const favoriterecipes = useSelector(
@@ -33,6 +34,10 @@ export default function RecipeDetailScreen(props) {
     >
       {/* recipe Image */}
       <View style={styles.imageContainer} testID="imageContainer">
+         <Image
+          source={{ uri: recipe.thumbnail }}
+          style={styles.recipeImage}
+        />
      
       </View>
 
@@ -66,13 +71,17 @@ export default function RecipeDetailScreen(props) {
             testID="recipeDetailsContainer"
           >
             <Text style={styles.recipeTitle} testID="recipeTitle">
+              
          
               
               </Text>
             <Text style={styles.recipeCategory} testID="recipeCategory">
+              {recipe.category}
               </Text>
           </View>
           <View style={styles.miscContainer} testID="miscContainer">
+               <Text style={styles.sectionTitle}>Description</Text>
+            <Text style={styles.descriptionText}>{recipe.description}</Text>
         
       </View>
 
