@@ -13,8 +13,28 @@ export default function Recipe({ categories, foods }) {
   return (
     <View style={styles.container}>
       <View testID="recipesDisplay">
+              <FlatList
+            data={foods}
+            keyExtractor={(item) => item.idRecipe}
+            renderItem={renderItem}
+            numColumns={2}
+          />
             
       </View>
+              <TouchableOpacity
+        onPress={() => navigation.navigate("RecipeDetail", { ...item })}
+      >
+        <Image
+          source={{ uri: item.thumbnail }}
+          style={[styles.recipeImage, { height: index % 3 === 0 ? hp(25) : hp(35) }]}
+        />
+        <Text style={styles.recipeText}>
+          {item.title.length > 20 ? item.title.slice(0, 20) + "..." : item.title}
+        </Text>
+        <Text style={styles.recipeDescription}>
+          {item.description.length > 40 ? item.description.slice(0, 40) + "..." : item.description}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
